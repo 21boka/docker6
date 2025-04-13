@@ -1,0 +1,116 @@
+Question - 1
+ A) sudo docker pull ubuntu:20.04
+ B) sudo docker images
+ C) sudo docker pull ubuntu:latest
+ D) sudo docker rmi < image id >
+ E) sudo docker run -d -it --name ubuntu-os ubuntu
+ F) sudo docker stop < container id >
+ G) sudo docker restart < container id >
+ H) sudo docker ps -a
+ I) sudo docker exec -d ubuntu-os mkdir abc
+ J) sudo docker exec -it ubuntu-os sh (to open terminal of container )
+ K) sudo docker stop < container id >
+ L) sudo docker container prune
+
+
+
+
+
+
+
+
+
+
+
+ 
+ Question - 2
+ A) sudo docker pull postgressql:latest
+ B) sudo docker run --name postgres-user1 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+ C) sudo docker exec -it postgres-user1 psql -U postgres
+ D) CREATE DATABASE college;
+ E) sudo docker stop < container id >
+ F) sudo docker rm < container id >
+
+
+
+
+
+
+
+
+
+
+
+ 
+ Question - 3
+apt  install nodejs
+apt install npm
+npm init
+ vim server.js
+
+// server.js
+const http = require('http');
+
+const hostname = '0.0.0.0';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, Docker!');
+});
+
+server.listen(port, hostname, () => {
+  console.log(Server running at http://${hostname}:${port}/);
+});
+
+
+
+
+
+ 
+ (use ls to check files are available or not)----> [ package.json package-lock.json server.js ]
+
+vim Dockerfile
+
+FROM node:16
+
+WORKDIR /usr/src/app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+
+
+ 
+ 
+ sudo docker build -t my-node .
+ sudo docker run --name node-server -d my-node
+ sudo docker run -p 3000:3000 my-node   
+
+
+
+
+
+
+
+
+
+
+ 
+Question - 4
+ sudo docker login -u ( add your username of docker hub account after -u )
+ sudo docker tag <image-name> <username>/<image-name>:<tag>
+ sudo docker push <user-name>/<image-name>:<tag>
+
+
+
+
+
+
